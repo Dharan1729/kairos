@@ -59,7 +59,7 @@ kairos = "kairos.cli:app"
 kairos-mcp = "kairos.mcp_server:main"
 
 [build-system]
-requires = ["setuptools>=77"]
+requires = ["setuptools>=84.1"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]

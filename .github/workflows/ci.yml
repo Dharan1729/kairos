@@ -111,6 +111,9 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
+      # The runner's preinstalled setuptools has known CVEs; it is build
+      # tooling, not a Kairos dependency, but pip-audit checks the environment.
+      - run: pip install --upgrade pip "setuptools>=84.1"
       - run: pip install ".[postgres]" "pip-audit>=2.7"
       - run: pip-audit --skip-editable
 
