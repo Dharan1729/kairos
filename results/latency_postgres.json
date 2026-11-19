@@ -1,0 +1,43 @@
+{
+  "backend": "postgres",
+  "queries": 40,
+  "reps": 3,
+  "budget_tokens": 400,
+  "latency": {
+    "uncached": {
+      "n": 120,
+      "p50_ms": 14.14,
+      "p95_ms": 16.72,
+      "mean_ms": 14.31
+    },
+    "miss": {
+      "n": 120,
+      "p50_ms": 18.27,
+      "p95_ms": 22.99,
+      "mean_ms": 19.55
+    },
+    "hit": {
+      "n": 120,
+      "p50_ms": 13.31,
+      "p95_ms": 17.89,
+      "mean_ms": 14.0
+    },
+    "embed": {
+      "n": 120,
+      "p50_ms": 6.53,
+      "p95_ms": 7.65,
+      "mean_ms": 6.7
+    }
+  },
+  "environment": {
+    "kairos": "0.2.0",
+    "python": "3.11.8",
+    "platform": "Darwin arm64",
+    "embedder": "sentence-transformers",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "sqlalchemy": "2.1.9",
+    "numpy": "2.4.6",
+    "postgres": "16.14"
+  },
+  "seconds": 12.3
+}

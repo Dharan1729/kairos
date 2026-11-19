@@ -1,0 +1,112 @@
+{
+  "label": "v0.2.0",
+  "source": "this tree",
+  "attacker_credential": "key bound to the attacker",
+  "generated_at": "2026-11-18T20:08:34+00:00",
+  "summary": {
+    "leak_requests": 9,
+    "leak_requests_with_forbidden_items": 0,
+    "leak_requests_refused": 5,
+    "distinct_forbidden_items_served": 0,
+    "staleness_scenarios": 4,
+    "staleness_scenarios_serving_stale": 0,
+    "staleness_scenarios_with_server_error": 0,
+    "fresh_request_after_expiry_status": 200
+  },
+  "scenarios": [
+    {
+      "scenario": "session_hijack",
+      "kind": "leak",
+      "description": "B names A's session id",
+      "requests": 2,
+      "refused": 2,
+      "requests_with_forbidden_items": 0,
+      "forbidden_items_served": [],
+      "cache_hits_among_requests": 0
+    },
+    {
+      "scenario": "user_spoof",
+      "kind": "leak",
+      "description": "B claims user_id=A",
+      "requests": 2,
+      "refused": 2,
+      "requests_with_forbidden_items": 0,
+      "forbidden_items_served": [],
+      "cache_hits_among_requests": 0
+    },
+    {
+      "scenario": "same_project_cache_reuse",
+      "kind": "leak",
+      "description": "B, same project and task as A, own session",
+      "requests": 2,
+      "refused": 0,
+      "requests_with_forbidden_items": 0,
+      "forbidden_items_served": [],
+      "cache_hits_among_requests": 0
+    },
+    {
+      "scenario": "cross_team_repo",
+      "kind": "leak",
+      "description": "ML-team user names team-platform's repo",
+      "requests": 2,
+      "refused": 0,
+      "requests_with_forbidden_items": 0,
+      "forbidden_items_served": [],
+      "cache_hits_among_requests": 1
+    },
+    {
+      "scenario": "unknown_user_repo",
+      "kind": "leak",
+      "description": "a user id not in the directory plus another team's repo",
+      "requests": 1,
+      "refused": 1,
+      "requests_with_forbidden_items": 0,
+      "forbidden_items_served": [],
+      "cache_hits_among_requests": 0
+    },
+    {
+      "scenario": "superseded_via_api",
+      "kind": "staleness",
+      "description": "a bundled item superseded through the proposal workflow",
+      "warm_request_status": 200,
+      "item_in_warm_bundle": true,
+      "outcome_after_change": "miss",
+      "stale_content_served": false
+    },
+    {
+      "scenario": "orm_in_place_edit",
+      "kind": "staleness",
+      "description": "content of a bundled org item edited through the ORM",
+      "warm_request_status": 200,
+      "item_in_warm_bundle": true,
+      "outcome_after_change": "miss",
+      "stale_content_served": false
+    },
+    {
+      "scenario": "raw_sql_edit",
+      "kind": "staleness",
+      "description": "content of a bundled org item edited with SQL",
+      "warm_request_status": 200,
+      "item_in_warm_bundle": true,
+      "outcome_after_change": "stale",
+      "stale_content_served": false
+    },
+    {
+      "scenario": "expired_item",
+      "kind": "staleness",
+      "description": "a bundled item's valid_until passes",
+      "warm_request_status": 200,
+      "item_in_warm_bundle": true,
+      "outcome_after_change": "miss",
+      "stale_content_served": false
+    },
+    {
+      "scenario": "fresh_request_after_expiry",
+      "kind": "robustness",
+      "description": "uncached request after a readable item expired",
+      "status": 200,
+      "outcome": "miss"
+    }
+  ],
+  "seconds": 5.7
+}
