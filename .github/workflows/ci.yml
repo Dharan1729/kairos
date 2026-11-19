@@ -95,7 +95,10 @@ jobs:
           python -c "import json,sys; s=json.load(open('out/leak_probe.json'))['summary']; sys.exit(s['leak_requests_with_forbidden_items'] or s['staleness_scenarios_serving_stale'] or s['fresh_request_after_expiry_status'] != 200)"
       - name: Boot the server against Postgres and call it over HTTP
         run: |
-          export KAIROS_DATABASE_URL=$PGURL KAIROS_HOME=$RUNNER_TEMP/kairos
+          # A fresh database, as on a first install: the tests above created
+          # tables directly, so migrating their database would collide.
+          python -c "import psycopg; psycopg.connect('$PGURL', autocommit=True).execute('CREATE DATABASE kairos_boot')"
+          export KAIROS_DATABASE_URL=${PGURL%/kairos}/kairos_boot KAIROS_HOME=$RUNNER_TEMP/kairos
           alembic upgrade head
           kairos seed
           (kairos serve --port 8000 &) ; for i in $(seq 1 30); do curl -sf http://127.0.0.1:8000/readyz && break; sleep 1; done
