@@ -1,0 +1,121 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  PIP_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu  # CPU-only torch: smaller, faster installs
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "ruff>=0.6"
+      - run: ruff check kairos tests benchmarks alembic
+      - run: ruff format --check kairos tests benchmarks alembic
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: mypy kairos
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-all-MiniLM-L6-v2
+      - run: pip install -e ".[dev]"
+      - run: python -m pytest -q
+
+  integration:
+    # The full suite, migrations and the leak probe against a real Postgres.
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: kairos
+          POSTGRES_USER: kairos
+          POSTGRES_PASSWORD: kairos-ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U kairos"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGURL: postgresql://kairos:kairos-ci@localhost:5432/kairos
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-all-MiniLM-L6-v2
+      - run: pip install -e ".[dev]"
+      - name: Migrations apply and match the models
+        run: |
+          KAIROS_DATABASE_URL=$PGURL alembic upgrade head
+          KAIROS_DATABASE_URL=$PGURL alembic check
+          KAIROS_DATABASE_URL=$PGURL alembic downgrade base
+      - name: Test suite on Postgres
+        run: KAIROS_TEST_DATABASE_URL=$PGURL python -m pytest -q
+      - name: Leak probe (fails on any leak or stale bundle)
+        run: |
+          python -m benchmarks.leak_probe --out out/leak_probe.json
+          python -c "import json,sys; s=json.load(open('out/leak_probe.json'))['summary']; sys.exit(s['leak_requests_with_forbidden_items'] or s['staleness_scenarios_serving_stale'] or s['fresh_request_after_expiry_status'] != 200)"
+      - name: Boot the server against Postgres and call it over HTTP
+        run: |
+          export KAIROS_DATABASE_URL=$PGURL KAIROS_HOME=$RUNNER_TEMP/kairos
+          alembic upgrade head
+          kairos seed
+          (kairos serve --port 8000 &) ; for i in $(seq 1 30); do curl -sf http://127.0.0.1:8000/readyz && break; sleep 1; done
+          KEY=$(python -c "import json,os;print(json.load(open(os.environ['KAIROS_HOME']+'/dev_keys.json'))['demo_user'])")
+          curl -sf -X POST http://127.0.0.1:8000/v1/assemble_context -H "Authorization: Bearer $KEY" \
+            -H "Content-Type: application/json" -d '{"task": {"description": "smoke test"}, "budget_tokens": 500}'
+
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install ".[postgres]" "pip-audit>=2.7"
+      - run: pip-audit --skip-editable
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t kairos:ci .

@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local state (database, dev keys)
+.kairos/
+*.db
+*.sqlite
+backups/
+
+# Benchmark scratch output (committed results live in results/)
+out/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+.env
+*.log

@@ -1,0 +1,14 @@
+{
+  "id": "org-1",
+  "name": "Nimbus Robotics",
+  "policies": [
+    "All customer data must stay in region of origin",
+    "No secrets committed to version control",
+    "Production deploys require two approvals"
+  ],
+  "standards": [
+    "All services expose /healthz",
+    "Internal APIs versioned as /v{n}/",
+    "Structured logging (JSON) required in all services"
+  ]
+}

@@ -1,0 +1,210 @@
+[
+  {
+    "id": "person-team-platform-mgr",
+    "name": "Dana (Platform Lead)",
+    "role": "Engineering Manager",
+    "team_id": "team-platform",
+    "manager_id": null,
+    "expertise": [
+      "kubernetes",
+      "terraform",
+      "graphql"
+    ],
+    "seniority": "manager"
+  },
+  {
+    "id": "person-team-platform-0",
+    "name": "Hana Elin",
+    "role": "Firmware Engineer",
+    "team_id": "team-platform",
+    "manager_id": "person-team-platform-mgr",
+    "expertise": [
+      "pytorch",
+      "postgres",
+      "observability"
+    ],
+    "seniority": "junior"
+  },
+  {
+    "id": "person-team-platform-1",
+    "name": "Noor Ben",
+    "role": "Software Engineer",
+    "team_id": "team-platform",
+    "manager_id": "person-team-platform-mgr",
+    "expertise": [
+      "pytorch",
+      "graphql",
+      "postgres"
+    ],
+    "seniority": "senior"
+  },
+  {
+    "id": "person-team-platform-2",
+    "name": "Ana Grace",
+    "role": "Firmware Engineer",
+    "team_id": "team-platform",
+    "manager_id": "person-team-platform-mgr",
+    "expertise": [
+      "postgres",
+      "observability",
+      "embedded-c"
+    ],
+    "seniority": "junior"
+  },
+  {
+    "id": "person-team-ml-mgr",
+    "name": "Omar (ML Perception Lead)",
+    "role": "Engineering Manager",
+    "team_id": "team-ml",
+    "manager_id": null,
+    "expertise": [
+      "vector-search",
+      "terraform",
+      "kubernetes"
+    ],
+    "seniority": "manager"
+  },
+  {
+    "id": "person-team-ml-0",
+    "name": "Farid Noor",
+    "role": "Staff Engineer",
+    "team_id": "team-ml",
+    "manager_id": "person-team-ml-mgr",
+    "expertise": [
+      "terraform",
+      "rust",
+      "graphql"
+    ],
+    "seniority": "mid"
+  },
+  {
+    "id": "person-team-ml-1",
+    "name": "Dana Chidi",
+    "role": "Engineering Manager",
+    "team_id": "team-ml",
+    "manager_id": "person-team-ml-mgr",
+    "expertise": [
+      "pytorch",
+      "distributed-systems",
+      "postgres"
+    ],
+    "seniority": "senior"
+  },
+  {
+    "id": "person-team-ml-2",
+    "name": "Ivo Ben",
+    "role": "Firmware Engineer",
+    "team_id": "team-ml",
+    "manager_id": "person-team-ml-mgr",
+    "expertise": [
+      "ci-cd",
+      "observability",
+      "pytorch"
+    ],
+    "seniority": "mid"
+  },
+  {
+    "id": "person-team-firmware-mgr",
+    "name": "Chidi (Firmware Lead)",
+    "role": "Engineering Manager",
+    "team_id": "team-firmware",
+    "manager_id": null,
+    "expertise": [
+      "observability",
+      "terraform",
+      "vector-search"
+    ],
+    "seniority": "manager"
+  },
+  {
+    "id": "person-team-firmware-0",
+    "name": "Leo Grace",
+    "role": "Firmware Engineer",
+    "team_id": "team-firmware",
+    "manager_id": "person-team-firmware-mgr",
+    "expertise": [
+      "pytorch",
+      "kubernetes",
+      "graphql"
+    ],
+    "seniority": "mid"
+  },
+  {
+    "id": "person-team-firmware-1",
+    "name": "Chidi Hana",
+    "role": "Software Engineer",
+    "team_id": "team-firmware",
+    "manager_id": "person-team-firmware-mgr",
+    "expertise": [
+      "embedded-c",
+      "terraform",
+      "ci-cd"
+    ],
+    "seniority": "senior"
+  },
+  {
+    "id": "person-team-firmware-2",
+    "name": "Leo Farid",
+    "role": "Staff Engineer",
+    "team_id": "team-firmware",
+    "manager_id": "person-team-firmware-mgr",
+    "expertise": [
+      "distributed-systems",
+      "graphql",
+      "terraform"
+    ],
+    "seniority": "senior"
+  },
+  {
+    "id": "person-team-appsvc-mgr",
+    "name": "Chidi (App Services Lead)",
+    "role": "Engineering Manager",
+    "team_id": "team-appsvc",
+    "manager_id": null,
+    "expertise": [
+      "vector-search",
+      "postgres",
+      "rust"
+    ],
+    "seniority": "manager"
+  },
+  {
+    "id": "person-team-appsvc-0",
+    "name": "Hana Farid",
+    "role": "Engineering Manager",
+    "team_id": "team-appsvc",
+    "manager_id": "person-team-appsvc-mgr",
+    "expertise": [
+      "embedded-c",
+      "terraform",
+      "observability"
+    ],
+    "seniority": "junior"
+  },
+  {
+    "id": "person-team-appsvc-1",
+    "name": "Kira Ben",
+    "role": "Senior Software Engineer",
+    "team_id": "team-appsvc",
+    "manager_id": "person-team-appsvc-mgr",
+    "expertise": [
+      "kubernetes",
+      "distributed-systems",
+      "embedded-c"
+    ],
+    "seniority": "mid"
+  },
+  {
+    "id": "person-team-appsvc-2",
+    "name": "Chidi Grace",
+    "role": "ML Engineer",
+    "team_id": "team-appsvc",
+    "manager_id": "person-team-appsvc-mgr",
+    "expertise": [
+      "kafka",
+      "distributed-systems",
+      "graphql"
+    ],
+    "seniority": "senior"
+  }
+]

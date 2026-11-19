@@ -1,0 +1,386 @@
+[
+  {
+    "id": "ctx-0",
+    "layer": "org",
+    "scope_id": "org-1",
+    "content": "All services must expose a /healthz endpoint for readiness checks.",
+    "tags": [
+      "org",
+      "org-1"
+    ],
+    "created_at": "2025-01-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-1",
+    "layer": "org",
+    "scope_id": "org-1",
+    "content": "Every service needs a health check endpoint at /healthz.",
+    "tags": [
+      "org",
+      "org-1"
+    ],
+    "created_at": "2025-02-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-2",
+    "layer": "org",
+    "scope_id": "org-1",
+    "content": "Secrets must never be committed to git; use the vault instead.",
+    "tags": [
+      "org",
+      "org-1"
+    ],
+    "created_at": "2025-03-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-3",
+    "layer": "team",
+    "scope_id": "team-platform",
+    "content": "Platform team does trunk-based development, no long-lived feature branches.",
+    "tags": [
+      "team",
+      "team-platform"
+    ],
+    "created_at": "2025-04-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-4",
+    "layer": "team",
+    "scope_id": "team-platform",
+    "content": "We migrated infra provisioning to Terraform; no manual console changes.",
+    "tags": [
+      "team",
+      "team-platform"
+    ],
+    "created_at": "2025-05-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-5",
+    "layer": "team",
+    "scope_id": "team-ml",
+    "content": "ML Perception standardized on PyTorch; TensorFlow code is legacy and being phased out.",
+    "tags": [
+      "team",
+      "team-ml"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-6",
+    "layer": "team",
+    "scope_id": "team-ml",
+    "content": "Model releases require a model card documenting training data and eval results.",
+    "tags": [
+      "team",
+      "team-ml"
+    ],
+    "created_at": "2025-07-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-7",
+    "layer": "project",
+    "scope_id": "proj-orchestrator-core",
+    "content": "Orchestrator Core uses Kafka as its event backbone because it needed replay support that SQS lacked.",
+    "tags": [
+      "project",
+      "proj-orchestrator-core"
+    ],
+    "created_at": "2025-08-01",
+    "staleness_hint": "medium"
+  },
+  {
+    "id": "ctx-8",
+    "layer": "project",
+    "scope_id": "proj-perception-model",
+    "content": "The perception model was ported from TensorFlow to PyTorch in 2023 for better export tooling.",
+    "tags": [
+      "project",
+      "proj-perception-model"
+    ],
+    "created_at": "2025-09-01",
+    "staleness_hint": "medium"
+  },
+  {
+    "id": "ctx-9",
+    "layer": "project",
+    "scope_id": "proj-ota-agent",
+    "content": "OTA Agent requires signed firmware images since a 2022 supply-chain incident.",
+    "tags": [
+      "project",
+      "proj-ota-agent"
+    ],
+    "created_at": "2025-10-01",
+    "staleness_hint": "medium"
+  },
+  {
+    "id": "ctx-10",
+    "layer": "project",
+    "scope_id": "proj-mobile-app",
+    "content": "Mobile app caches data locally in SQLite to support offline-first usage.",
+    "tags": [
+      "project",
+      "proj-mobile-app"
+    ],
+    "created_at": "2025-11-01",
+    "staleness_hint": "medium"
+  },
+  {
+    "id": "ctx-personal-person-team-platform-mgr",
+    "layer": "personal",
+    "scope_id": "person-team-platform-mgr",
+    "content": "Dana: Prefers pairing on architecture decisions rather than async docs.",
+    "tags": [
+      "personal",
+      "person-team-platform-mgr"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-platform-0",
+    "layer": "personal",
+    "scope_id": "person-team-platform-0",
+    "content": "Hana: Prefers pairing on architecture decisions rather than async docs.",
+    "tags": [
+      "personal",
+      "person-team-platform-0"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-platform-1",
+    "layer": "personal",
+    "scope_id": "person-team-platform-1",
+    "content": "Noor: Prefers pairing on architecture decisions rather than async docs.",
+    "tags": [
+      "personal",
+      "person-team-platform-1"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-platform-2",
+    "layer": "personal",
+    "scope_id": "person-team-platform-2",
+    "content": "Ana: Likes to be shown the diff before any commit.",
+    "tags": [
+      "personal",
+      "person-team-platform-2"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-ml-mgr",
+    "layer": "personal",
+    "scope_id": "person-team-ml-mgr",
+    "content": "Omar: Wants test coverage called out explicitly in review comments.",
+    "tags": [
+      "personal",
+      "person-team-ml-mgr"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-ml-0",
+    "layer": "personal",
+    "scope_id": "person-team-ml-0",
+    "content": "Farid: Likes to be shown the diff before any commit.",
+    "tags": [
+      "personal",
+      "person-team-ml-0"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-ml-1",
+    "layer": "personal",
+    "scope_id": "person-team-ml-1",
+    "content": "Dana: Likes to be shown the diff before any commit.",
+    "tags": [
+      "personal",
+      "person-team-ml-1"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-ml-2",
+    "layer": "personal",
+    "scope_id": "person-team-ml-2",
+    "content": "Ivo: Dislikes speculative abstractions; wants YAGNI enforced in review.",
+    "tags": [
+      "personal",
+      "person-team-ml-2"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-firmware-mgr",
+    "layer": "personal",
+    "scope_id": "person-team-firmware-mgr",
+    "content": "Chidi: Dislikes speculative abstractions; wants YAGNI enforced in review.",
+    "tags": [
+      "personal",
+      "person-team-firmware-mgr"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-firmware-0",
+    "layer": "personal",
+    "scope_id": "person-team-firmware-0",
+    "content": "Leo: Wants test coverage called out explicitly in review comments.",
+    "tags": [
+      "personal",
+      "person-team-firmware-0"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-firmware-1",
+    "layer": "personal",
+    "scope_id": "person-team-firmware-1",
+    "content": "Chidi: Dislikes speculative abstractions; wants YAGNI enforced in review.",
+    "tags": [
+      "personal",
+      "person-team-firmware-1"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-firmware-2",
+    "layer": "personal",
+    "scope_id": "person-team-firmware-2",
+    "content": "Leo: Prefers pairing on architecture decisions rather than async docs.",
+    "tags": [
+      "personal",
+      "person-team-firmware-2"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-appsvc-mgr",
+    "layer": "personal",
+    "scope_id": "person-team-appsvc-mgr",
+    "content": "Chidi: Dislikes speculative abstractions; wants YAGNI enforced in review.",
+    "tags": [
+      "personal",
+      "person-team-appsvc-mgr"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-appsvc-0",
+    "layer": "personal",
+    "scope_id": "person-team-appsvc-0",
+    "content": "Hana: Prefers pairing on architecture decisions rather than async docs.",
+    "tags": [
+      "personal",
+      "person-team-appsvc-0"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-appsvc-1",
+    "layer": "personal",
+    "scope_id": "person-team-appsvc-1",
+    "content": "Kira: Wants test coverage called out explicitly in review comments.",
+    "tags": [
+      "personal",
+      "person-team-appsvc-1"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-personal-person-team-appsvc-2",
+    "layer": "personal",
+    "scope_id": "person-team-appsvc-2",
+    "content": "Chidi: Likes to be shown the diff before any commit.",
+    "tags": [
+      "personal",
+      "person-team-appsvc-2"
+    ],
+    "created_at": "2025-06-01",
+    "staleness_hint": "low"
+  },
+  {
+    "id": "ctx-session-0",
+    "layer": "session",
+    "scope_id": "session-0",
+    "content": "Working notes: the new service is ledger-sync; its readiness probe must also check Kafka consumer lag.",
+    "tags": [
+      "session",
+      "session-0"
+    ],
+    "created_at": "2025-11-01",
+    "staleness_hint": "high"
+  },
+  {
+    "id": "ctx-session-1",
+    "layer": "session",
+    "scope_id": "session-1",
+    "content": "Working notes: the perception service's health route must not load model weights.",
+    "tags": [
+      "session",
+      "session-1"
+    ],
+    "created_at": "2025-11-01",
+    "staleness_hint": "high"
+  },
+  {
+    "id": "ctx-session-4",
+    "layer": "session",
+    "scope_id": "session-4",
+    "content": "Working notes: reuse the Terraform module in infra/modules/svc-base rather than writing a new one.",
+    "tags": [
+      "session",
+      "session-4"
+    ],
+    "created_at": "2025-11-01",
+    "staleness_hint": "high"
+  },
+  {
+    "id": "ctx-session-6",
+    "layer": "session",
+    "scope_id": "session-6",
+    "content": "Working notes: the offline cache for the new screen should reuse the existing SQLite schema.",
+    "tags": [
+      "session",
+      "session-6"
+    ],
+    "created_at": "2025-11-01",
+    "staleness_hint": "high"
+  },
+  {
+    "id": "ctx-session-12",
+    "layer": "session",
+    "scope_id": "session-12",
+    "content": "Working notes: this healthz work is blocked on the shared probe library release.",
+    "tags": [
+      "session",
+      "session-12"
+    ],
+    "created_at": "2025-11-01",
+    "staleness_hint": "high"
+  }
+]

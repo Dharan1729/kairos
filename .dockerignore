@@ -1,0 +1,10 @@
+.git
+.venv
+.kairos
+out
+results
+benchmarks
+tests
+docs
+**/__pycache__
+*.db

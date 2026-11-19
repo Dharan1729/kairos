@@ -1,0 +1,178 @@
+[
+  {
+    "id": "session-0",
+    "person_id": "person-team-platform-0",
+    "project_id": "proj-orchestrator-core",
+    "task_description": "Add a /healthz endpoint to a new internal service",
+    "timestamp": "2025-11-01T09:00:00Z",
+    "recent_messages": [
+      "User: Add a /healthz endpoint to a new internal service",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-1",
+    "person_id": "person-team-ml-2",
+    "project_id": "proj-perception-model",
+    "task_description": "Add a health check route to a service that's missing one",
+    "timestamp": "2025-11-02T09:00:00Z",
+    "recent_messages": [
+      "User: Add a health check route to a service that's missing one",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-2",
+    "person_id": "person-team-firmware-mgr",
+    "project_id": "proj-ota-agent",
+    "task_description": "Investigate why the perception model is slower after the PyTorch migration",
+    "timestamp": "2025-11-03T09:00:00Z",
+    "recent_messages": [
+      "User: Investigate why the perception model is slower after the PyTorch migration",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-3",
+    "person_id": "person-team-appsvc-mgr",
+    "project_id": "proj-mobile-app",
+    "task_description": "Debug latency regression in perception model post-PyTorch port",
+    "timestamp": "2025-11-04T09:00:00Z",
+    "recent_messages": [
+      "User: Debug latency regression in perception model post-PyTorch port",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-4",
+    "person_id": "person-team-platform-mgr",
+    "project_id": "proj-orchestrator-core",
+    "task_description": "Set up Terraform for a new platform microservice",
+    "timestamp": "2025-11-05T09:00:00Z",
+    "recent_messages": [
+      "User: Set up Terraform for a new platform microservice",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-5",
+    "person_id": "person-team-ml-0",
+    "project_id": "proj-perception-model",
+    "task_description": "Review OTA rollback behavior after 3 failed healthchecks",
+    "timestamp": "2025-11-06T09:00:00Z",
+    "recent_messages": [
+      "User: Review OTA rollback behavior after 3 failed healthchecks",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-6",
+    "person_id": "person-team-firmware-0",
+    "project_id": "proj-ota-agent",
+    "task_description": "Add offline caching to a new mobile screen",
+    "timestamp": "2025-11-07T09:00:00Z",
+    "recent_messages": [
+      "User: Add offline caching to a new mobile screen",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-7",
+    "person_id": "person-team-appsvc-2",
+    "project_id": "proj-mobile-app",
+    "task_description": "Write a model card for the new object-detection release",
+    "timestamp": "2025-11-08T09:00:00Z",
+    "recent_messages": [
+      "User: Write a model card for the new object-detection release",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-8",
+    "person_id": "person-team-platform-mgr",
+    "project_id": "proj-orchestrator-core",
+    "task_description": "Add a /healthz endpoint to a new internal service",
+    "timestamp": "2025-11-09T09:00:00Z",
+    "recent_messages": [
+      "User: Add a /healthz endpoint to a new internal service",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-9",
+    "person_id": "person-team-ml-2",
+    "project_id": "proj-perception-model",
+    "task_description": "Add a health check route to a service that's missing one",
+    "timestamp": "2025-11-10T09:00:00Z",
+    "recent_messages": [
+      "User: Add a health check route to a service that's missing one",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-10",
+    "person_id": "person-team-firmware-2",
+    "project_id": "proj-ota-agent",
+    "task_description": "Investigate why the perception model is slower after the PyTorch migration",
+    "timestamp": "2025-11-11T09:00:00Z",
+    "recent_messages": [
+      "User: Investigate why the perception model is slower after the PyTorch migration",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-11",
+    "person_id": "person-team-appsvc-2",
+    "project_id": "proj-mobile-app",
+    "task_description": "Debug latency regression in perception model post-PyTorch port",
+    "timestamp": "2025-11-12T09:00:00Z",
+    "recent_messages": [
+      "User: Debug latency regression in perception model post-PyTorch port",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-12",
+    "person_id": "person-team-platform-1",
+    "project_id": "proj-orchestrator-core",
+    "task_description": "Set up Terraform for a new platform microservice",
+    "timestamp": "2025-11-13T09:00:00Z",
+    "recent_messages": [
+      "User: Set up Terraform for a new platform microservice",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-13",
+    "person_id": "person-team-ml-mgr",
+    "project_id": "proj-perception-model",
+    "task_description": "Review OTA rollback behavior after 3 failed healthchecks",
+    "timestamp": "2025-11-14T09:00:00Z",
+    "recent_messages": [
+      "User: Review OTA rollback behavior after 3 failed healthchecks",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-14",
+    "person_id": "person-team-firmware-mgr",
+    "project_id": "proj-ota-agent",
+    "task_description": "Add offline caching to a new mobile screen",
+    "timestamp": "2025-11-15T09:00:00Z",
+    "recent_messages": [
+      "User: Add offline caching to a new mobile screen",
+      "Agent: Let me look into that."
+    ]
+  },
+  {
+    "id": "session-15",
+    "person_id": "person-team-appsvc-1",
+    "project_id": "proj-mobile-app",
+    "task_description": "Write a model card for the new object-detection release",
+    "timestamp": "2025-11-16T09:00:00Z",
+    "recent_messages": [
+      "User: Write a model card for the new object-detection release",
+      "Agent: Let me look into that."
+    ]
+  }
+]

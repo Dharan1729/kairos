@@ -1,0 +1,55 @@
+[
+  {
+    "id": "proj-orchestrator-core",
+    "team_id": "team-platform",
+    "name": "Orchestrator Core",
+    "repo_name": "nimbus/orchestrator-core",
+    "architecture_notes": [
+      "Event-driven, Kafka backbone",
+      "Postgres for durable state"
+    ],
+    "decisions": [
+      "Chose Kafka over SQS for replay support",
+      "Split scheduler out of monolith in 2024"
+    ]
+  },
+  {
+    "id": "proj-perception-model",
+    "team_id": "team-ml",
+    "name": "Perception Model",
+    "repo_name": "nimbus/perception-model",
+    "architecture_notes": [
+      "ONNX export for edge deploy",
+      "Trained on internal robot fleet data"
+    ],
+    "decisions": [
+      "Moved from TF to PyTorch in 2023",
+      "Quantized model for edge inference"
+    ]
+  },
+  {
+    "id": "proj-ota-agent",
+    "team_id": "team-firmware",
+    "name": "OTA Agent",
+    "architecture_notes": [
+      "A/B partition scheme",
+      "Rollback on 3 consecutive failed healthchecks"
+    ],
+    "decisions": [
+      "Signed firmware images required since 2022 incident"
+    ],
+    "repo_name": "nimbus/proj-ota-agent"
+  },
+  {
+    "id": "proj-mobile-app",
+    "team_id": "team-appsvc",
+    "name": "Mobile App",
+    "architecture_notes": [
+      "GraphQL gateway in front of internal REST services"
+    ],
+    "decisions": [
+      "Offline-first cache using local SQLite"
+    ],
+    "repo_name": "nimbus/proj-mobile-app"
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "id": "team-platform",
+    "org_id": "org-1",
+    "name": "Platform",
+    "conventions": [
+      "Terraform for all infra",
+      "Trunk-based development"
+    ],
+    "initiatives": [
+      "Migrating from EC2 to k8s",
+      "Cost reduction Q3"
+    ]
+  },
+  {
+    "id": "team-ml",
+    "org_id": "org-1",
+    "name": "ML Perception",
+    "conventions": [
+      "PyTorch only, no TF",
+      "Model cards required per release"
+    ],
+    "initiatives": [
+      "Reducing inference latency below 50ms",
+      "New object-detection model"
+    ]
+  },
+  {
+    "id": "team-firmware",
+    "org_id": "org-1",
+    "name": "Firmware",
+    "conventions": [
+      "C for hot path, Rust for new modules"
+    ],
+    "initiatives": [
+      "OTA update reliability push"
+    ]
+  },
+  {
+    "id": "team-appsvc",
+    "org_id": "org-1",
+    "name": "App Services",
+    "conventions": [
+      "GraphQL for client-facing APIs",
+      "Feature-flagged rollouts"
+    ],
+    "initiatives": [
+      "Mobile app offline mode"
+    ]
+  }
+]
