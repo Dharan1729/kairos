@@ -1,6 +1,9 @@
 # Multi-stage: build wheels (hnswlib and psycopg2 may need a compiler) in a
 # builder image, run in a slim image without a compiler.
 FROM python:3.11-slim AS builder
+# Portable hnswlib build: without this it is compiled for the build machine's
+# CPU (-march=native) and can crash with "illegal instruction" elsewhere.
+ENV HNSWLIB_NO_NATIVE=1
 WORKDIR /build
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential \
     && rm -rf /var/lib/apt/lists/*

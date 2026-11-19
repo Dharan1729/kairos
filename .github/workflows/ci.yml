@@ -9,6 +9,9 @@ permissions:
   contents: read
 
 env:
+  # hnswlib compiles from source with -march=native by default; a wheel built
+  # on one runner can crash another with SIGILL. Build it portable.
+  HNSWLIB_NO_NATIVE: "1"
   PIP_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu  # CPU-only torch: smaller, faster installs
 
 jobs:
@@ -30,7 +33,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
       - run: pip install -e ".[dev]"
       - run: mypy kairos
 
@@ -44,7 +46,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: pip
       - uses: actions/cache@v4
         with:
           path: ~/.cache/huggingface
@@ -76,7 +77,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
       - uses: actions/cache@v4
         with:
           path: ~/.cache/huggingface
@@ -113,7 +113,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
       # The runner's preinstalled setuptools has known CVEs; it is build
       # tooling, not a Kairos dependency, but pip-audit checks the environment.
       - run: pip install --upgrade pip "setuptools>=84.1"

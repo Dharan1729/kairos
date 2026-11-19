@@ -15,11 +15,13 @@ Both ports bind to 127.0.0.1 and are configurable, so the stack can run next to 
 ## Without Docker
 
 ```bash
-pip install ".[postgres]"
+HNSWLIB_NO_NATIVE=1 pip install ".[postgres]"   # portable build; see below
 export KAIROS_DATABASE_URL=postgresql://kairos:...@db:5432/kairos
 alembic upgrade head
 uvicorn kairos.api:app --host 127.0.0.1 --port 8000 --workers 2
 ```
+
+`hnswlib` (the vector index) is compiled from source and, by default, tuned to the CPU it is built on (`-march=native`). If you build on one machine and run on another, as with a CI-built image or a shared wheel cache, set `HNSWLIB_NO_NATIVE=1` when installing, or the process can die with "illegal instruction". The Dockerfile already does this.
 
 ## Migrations
 

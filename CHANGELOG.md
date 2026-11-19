@@ -12,6 +12,7 @@ First public release. The cache and access model were rebuilt after an adversari
 - **Write rules.** Org-layer writes need an admin; members write to their own team's scopes and their own personal and session scopes; the layer must match the scope's kind. Proposals follow the same rules; reading or rejecting another scope's proposal returns 404.
 - Git extraction over the API is admin-only and limited to `KAIROS_GIT_EXTRACT_ROOTS`.
 - LLM compression is opt-in (`KAIROS_LLM_PROVIDER`); an API key in the environment no longer turns it on.
+- The Docker image builds `hnswlib` portably (`HNSWLIB_NO_NATIVE=1`). By default it compiles for the build machine's CPU, so an image built on one machine could crash with "illegal instruction" on another.
 - `/readyz` no longer returns database error text.
 
 **Fixes**
