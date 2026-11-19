@@ -54,6 +54,8 @@ Per scenario on 0.1.0: session_hijack 1 of 2 leaked A's personal note (one reque
 
 **Limits.** Nine attack requests and four change scenarios on a 32-item demo org. They target the failure modes found by reading the code; they are not a fuzzing campaign. CI runs the probe on every push and fails on any leak.
 
+![Leak probe, 0.1.0 against 0.2.0](../results/figures/fig1_leak_probe.png)
+
 ---
 
 ## BENCH-002 — Context-selection quality
@@ -90,6 +92,8 @@ Per scenario on 0.1.0: session_hijack 1 of 2 leaked A's personal note (one reque
 
 Budget adherence: 0 of 840 bundles exceeded their budget; the largest was exactly at the budget.
 
+![Recall within a budget, and forbidden items selected without scoping](../results/figures/fig2_selection_quality.png)
+
 Token savings against dumping every readable layer (518 tokens): at 200 tokens Kairos keeps 0.87 of the gold items with 62% fewer tokens; at 400, 0.98 with 24% fewer; with the floor, 0.57 with 88% fewer.
 
 **Interpretation.**
@@ -122,6 +126,8 @@ Token savings against dumping every readable layer (518 tokens): at 200 tokens K
 | 0.95 | 0.21 | 20/20 | 0/20 | 0/20 | 0/16 | 0 | 0 | 6.5 ms | 7.1 ms |
 | 0.90, cross-user on | 0.29 | 20/20 | 0/20 | 0/20 | 8/16 | 0 | 0 | 5.7 ms | 7.7 ms |
 
+![Cache hits by similarity threshold, correct and wrong](../results/figures/fig3_cache_threshold.png)
+
 **Interpretation.**
 
 - **A loose threshold serves the wrong bundle.** At 0.75 (the 0.1.0 default) all 8 paraphrase hits returned a bundle that differs from what the paraphrased request would have got. They were not leaks (same caller, same scopes), but they were wrong. The default is now 0.90; paraphrases do not hit.
@@ -144,6 +150,8 @@ Token savings against dumping every readable layer (518 tokens): at 200 tokens K
 | Cache off | 5.9 ms | 8.7 ms | 14.1 ms | 16.7 ms |
 | Cache on, miss | 7.4 ms | 9.7 ms | 18.3 ms | 23.0 ms |
 | Cache on, hit | 5.3 ms | 7.6 ms | 13.3 ms | 17.9 ms |
+
+![assemble_context latency on SQLite and Postgres](../results/figures/fig4_latency.png)
 
 **Interpretation.** At this size the embedding is the largest single cost on SQLite. Postgres adds about 8 ms of round trips per request (each request makes several small queries: directory lookups, the readable-version query, retrieval, the audit insert); a cache miss adds the store. Embedding was also slower during the Postgres run, which suggests some contention from the database container on the same machine.
 

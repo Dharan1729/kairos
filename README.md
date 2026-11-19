@@ -98,6 +98,8 @@ Everything here comes from [docs/benchmarks.md](docs/benchmarks.md), where the m
 | Change scenarios that served stale content (ORM edit, SQL edit, expiry, supersession) | **3 of 4** | **0 of 4** |
 | Uncached request after an item expired | HTTP 500 | 200 |
 
+![Leak probe, 0.1.0 against 0.2.0](results/figures/fig1_leak_probe.png)
+
 The 0.1.0 cache did key on the resolved scopes. The leak came from what fed it: scope resolution trusted the `user_id`, `session_id` and `repo` in the request, with no ownership or team check, so one tenant-wide key could resolve to anyone's scopes, and the cache then served those bundles again. Staleness came from keying on a per-scope version counter that in-place edits and expiry did not change. Both are fixed by construction above and pinned by [tests/test_cache_safety.py](tests/test_cache_safety.py).
 
 **Context selection.** 20 labelled tasks, each asked in two phrasings (40 queries), against 84 items in a synthetic 3-team org. Mean 2.65 relevant items per task. "Dump all layers" (everything the caller can read) averages 518 tokens.
@@ -110,6 +112,8 @@ The 0.1.0 cache did key on the resolved scopes. The leak came from what fed it: 
 | Dump layers in order, cut at budget | 0.03 | 0.18 | 199 | 0 |
 | Kairos with a 0.30 similarity floor | **0.53** | 0.57 | **62** | 0 |
 | Similarity over the whole org, no scoping | 0.18 | 0.83 | 198 | **162** |
+
+![Recall within a budget, and forbidden items selected without scoping](results/figures/fig2_selection_quality.png)
 
 - **The ranker does not beat plain similarity here.** Kairos and vector top-k are within 0.01 at every budget; the graph-centrality factor slightly hurts (recall 0.71 vs 0.75 at 100 tokens). The extra factors have nothing to work with when every item has the same confidence and freshness, as in this dataset. What does the work is scoping and the budgeter.
 - **Budgets are kept.** 0 of 840 bundles exceeded the budget (by Kairos's 4-characters-per-token estimate).
@@ -125,6 +129,8 @@ The 0.1.0 cache did key on the resolved scopes. The leak came from what fed it: 
 | **0.90 (default)** | 0.21 | 0 of 20 | **0** | 0 |
 | 0.90, cross-user reuse on | 0.29 | 0 of 20 | 0 | 0 |
 
+![Cache hits by similarity threshold, correct and wrong](results/figures/fig3_cache_threshold.png)
+
 - At 0.75, every paraphrase hit served a bundle different from the one the request would have got. The default is now 0.90: exact repeats hit, paraphrases do not.
 - **The cache saves little time at this scale:** median 6.8 ms on a hit against 8.0 ms on a miss, because the task embedding (median 3.8 ms) is computed before the lookup. Its value is consistency and fewer database reads, not latency.
 
@@ -136,6 +142,8 @@ The 0.1.0 cache did key on the resolved scopes. The leak came from what fed it: 
 | Cache on, miss (includes store) | 7.4 / 9.7 ms | 18.3 / 23.0 ms |
 | Cache on, hit | 5.3 / 7.6 ms | 13.3 / 17.9 ms |
 | Embedding alone | 3.8 / 6.0 ms | 6.5 / 7.7 ms |
+
+![assemble_context latency on SQLite and Postgres](results/figures/fig4_latency.png)
 
 ## What you get
 
@@ -191,6 +199,7 @@ bash scripts/reproduce.sh postgres    # Postgres in Docker on 127.0.0.1:55439: m
 | Cache table | `python -m benchmarks.cache_bench` | [results/cache_bench.json](results/cache_bench.json) |
 | Latency table | `python -m benchmarks.latency [--database-url ...]` | [results/latency_sqlite.json](results/latency_sqlite.json), [results/latency_postgres.json](results/latency_postgres.json) |
 | Safety rules hold | `pytest tests/test_cache_safety.py tests/test_tenant_isolation.py` | CI |
+| Figures | `pip install matplotlib && python -m benchmarks.plots` (reads only the committed results) | [results/figures/](results/figures/) |
 
 Benchmarks write to `out/` and never overwrite `results/`. Counts reproduce exactly with the same embedding model; latency depends on your machine. The 0.1.0 code is not part of this repository's history; its result is committed as measured.
 
